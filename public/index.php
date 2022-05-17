@@ -1,16 +1,18 @@
 <?php
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 use Slim\App;
 use Slim\Container;
 use Slim\Http\Environment;
-use Slim\Http\Request;
+// use Slim\Http\Request;
 
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
-use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
+
 
 use App\http\controller\userController;
 use App\class\model\userModel;
@@ -35,7 +37,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 });
 
 $app->get('/users', function (Request $request, Response $response) {
-    $modelObj = new userModel($conn);
+    $modelObj = new userModel($this->conn);
     // $userObj = new userController($modelObj);
     
     // $uList = $userObj->users();
